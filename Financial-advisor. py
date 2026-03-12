@@ -1,1 +1,87 @@
+# AI Financial Advisor Project
+
+def calculate_finances():
+    print("\n--- Enter Your Financial Details ---")
+
+    income = float(input("Enter your monthly income: "))
+    food = float(input("Food expense: "))
+    rent = float(input("Rent expense: "))
+    travel = float(input("Travel expense: "))
+    shopping = float(input("Shopping expense: "))
+    other = float(input("Other expenses: "))
+
+    total_expense = food + rent + travel + shopping + other
+    savings = income - total_expense
+
+    print("\n----- Financial Summary -----")
+    print("Income:", income)
+    print("Total Expenses:", total_expense)
+    print("Savings:", savings)
+
+    financial_advice(income, savings)
+
+
+def financial_advice(income, savings):
+
+    print("\n----- AI Financial Advice -----")
+
+    if savings <= 0:
+        print("⚠ Warning: Your expenses are higher than income.")
+        print("Advice: Reduce unnecessary spending.")
+    elif savings < income * 0.2:
+        print("Advice: Try saving at least 20% of your income.")
+    elif savings < income * 0.4:
+        print("Good savings! You can start small investments.")
+    else:
+        print("Excellent savings! Consider long-term investments.")
+
+    investment_advice()
+
+
+def investment_advice():
+
+    risk = input("\nEnter your investment risk level (low/medium/high): ")
+
+    print("\n----- Investment Suggestions -----")
+
+    if risk.lower() == "low":
+        print("• Fixed Deposit")
+        print("• Public Provident Fund (PPF)")
+        print("• Gold")
+
+    elif risk.lower() == "medium":
+        print("• Mutual Funds")
+        print("• SIP Investment")
+        print("• Index Funds")
+
+    elif risk.lower() == "high":
+        print("• Stocks")
+        print("• Cryptocurrency")
+        print("• Equity Funds")
+
+    else:
+        print("Invalid risk level.")
+
+
+def main():
+
+    while True:
+        print("\n===== AI FINANCIAL ADVISOR =====")
+        print("1. Enter Financial Details")
+        print("2. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            calculate_finances()
+
+        elif choice == "2":
+            print("Thank you for using AI Financial Advisor!")
+            break
+
+        else:
+            print("Invalid choice")
+
+
+main()
 
