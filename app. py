@@ -1,11 +1,35 @@
 import streamlit as st
 
+# Title
 st.title("AI Financial Advisor")
 
-income = st.number_input("Enter your monthly income")
-expenses = st.number_input("Enter your monthly expenses")
+st.write("This app helps you calculate savings and gives simple financial advice.")
 
+# User Inputs
+income = st.number_input("Enter your monthly income (₹)", min_value=0)
+expenses = st.number_input("Enter your monthly expenses (₹)", min_value=0)
+
+# Calculate Button
 if st.button("Calculate Savings"):
+    
     savings = income - expenses
+    
+    st.subheader("Result")
     st.write("Your monthly savings:", savings)
+
+    # Advice System
+    if savings > 0:
+        st.success("Good! You are saving money.")
+        
+        if savings > income * 0.3:
+            st.write("Great job! Consider investing in mutual funds or SIP.")
+        else:
+            st.write("Try to reduce expenses to increase savings.")
+    
+    elif savings == 0:
+        st.warning("You are spending all your income. Try saving at least 20%.")
+    
+    else:
+        st.error("Your expenses are higher than your income. Reduce spending.")
+
 
